@@ -48,12 +48,15 @@ def get_gridpoints():
         for p in gridpoints:
             of.write('{:f},{:f}\n'.format(p.x, p.y))
 
-# Grid points
-df_coords_grid = pd.read_csv('testoutbsas.csv')
-gdf = gpd.GeoDataFrame(df_coords_grid, geometry=gpd.points_from_xy(df_coords.lon, df_coords.lat))
+def coord_gridpoints(data):
+    # Grid points
+    df_coords_grid = pd.read_csv('testoutbsas.csv')
+    gdf = gpd.GeoDataFrame(df_coords_grid, geometry=gpd.points_from_xy(df_coords_grid.lon, df_coords_grid.lat))
 
+    # Create geodataframe with data
+    gpd_data = gpd.GeoDataFrame(data,
+                                crs = epsg,
+                                geometry = gpd.points_from_xy(data.search_longitude, data.search_latitude))
 
-# Create geodataframe with data
-gpd_data = gpd.GeoDataFrame(data,
-                            crs = epsg,
-                            geometry = gpd.points_from_xy(data.search_longitude, data.search_latitude))
+    return gpd_data
+

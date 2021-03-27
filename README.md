@@ -1,4 +1,4 @@
 # GoProject
 
-GoProject is a machine learning model that I'm carrying out to predict parking lot demand
+GoProject is a machine learning model to predict parking lot demand
 

@@ -3,8 +3,6 @@ import matplotlib.pyplot as plt
 import geopandas as gpd
 from shapely.geometry import Polygon, Point
 import pyproj
-from goproject.lists import neigh_list
-
 
 def search_neighborhood(neighborhood, coordinates):
 

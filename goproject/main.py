@@ -9,7 +9,7 @@ from sys import argv
 def main():
     argc = len(argv)
 
-    neighborhood = 'palermo'
+    neighborhood = 'ciudad'
 
     if argc > 1:
         command = argv[1]

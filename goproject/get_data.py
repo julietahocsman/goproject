@@ -1,12 +1,16 @@
 import pandas as pd
 import geopandas as gpd
 import csv
+import json
 
 
-def get_data():
+
+def get_data(data_path):
     '''returns a DataFrame with search tracks'''
-    data = pd.read_json('backupPretty.json')
+    data = pd.read_json(data_path)
+    data = pd.DataFrame.from_dict(data['__collections__']["search_track"])
     return data
+
 
 def preprocess_data(data):
     data = data.T
@@ -17,8 +21,8 @@ def preprocess_data(data):
     data = data[data.search_method != 'startup']
     return data
 
-if __name__ == '__main__':
-    data = get_data()
+def preproc(data_path):
+    data = get_data(data_path)
+    return preprocess_data(data)
 
-
-
+get_data('raw_data/dataBackup.json')

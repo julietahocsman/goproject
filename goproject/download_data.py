@@ -1,7 +1,7 @@
 '''
 generar clave en node.js y descargarla
 instalar node: sudo npm install -g node-firestore-import-export
-firestore-export --accountCredentials path_del_json.json --backupFile path_del_backup.json
+firestore-export --accountCredentials path_del_json.json --backupFile path_del_backup.json -p
 '''
 import os
 

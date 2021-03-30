@@ -19,9 +19,21 @@ def preprocess_data(data):
     data.drop(columns="index")
     data['search_method'] = data['search_method'].convert_dtypes()
     data = data[data.search_method != 'startup']
+    data.drop(columns='index', inplace=True)
+    data['timestamp'] = pd.to_datetime(data['timestamp'], utc=True, errors='coerce')
+    data['arrive'] = pd.to_datetime(data['arrive'], utc=True, errors='coerce')
+    data['leave'] = pd.to_datetime(data['leave'], utc=True, errors='coerce')
+    data['timestamp'] = data.timestamp.dt.strftime("%Y-%m-%d %H:%M:%S")
+    data['arrive'] = data.arrive.dt.strftime("%Y-%m-%d %H:%M:%S")
+    data['leave'] = data.leave.dt.strftime("%Y-%m-%d %H:%M:%S")
+    data['timestamp'] = pd.to_datetime(data['timestamp'])
+    data['arrive'] = pd.to_datetime(data['arrive'])
+    data['leave'] = pd.to_datetime(data['leave'])
+    data["arrive_weekday"] = data["arrive"].dt.weekday
     return data
 
 def preproc(data_path):
     data = get_data(data_path)
     return preprocess_data(data)
 
+get_data('raw_data/dataBackup.json')

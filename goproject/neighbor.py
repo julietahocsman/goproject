@@ -7,13 +7,13 @@ import pyproj
 def search_neighborhood(neighborhood, coordinates):
 
     bsas_map = gpd.read_file('gopa_data/barrios-ciudad')
-    neighborhood = neighborhood.upper()
+    neighborhood = neighborhood.upper().replace('_', ' ')
     gpd_data = gpd.GeoDataFrame(coordinates,
                          geometry = gpd.points_from_xy(coordinates.search_longitude, coordinates.search_latitude))
     reservas_bsas = gpd_data[['geometry']]
     reservas_bsas = reservas_bsas.set_crs("EPSG:4326")
 
-    if neighborhood == 'CIUDAD':
+    if neighborhood == 'CABA':
         df_barrio = bsas_map
         fig,ax = plt.subplots(figsize = (15,16))
         bsas_map.plot(ax=ax, color='lightgrey')

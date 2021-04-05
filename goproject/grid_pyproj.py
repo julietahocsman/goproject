@@ -10,7 +10,7 @@ import csv
 
 # Set four corners of map grid
 def set_corners():
-    df_corners = pd.read_csv('fourcorners.csv', ',')
+    df_corners = pd.read_csv('../raw_data/fourcorners.csv', ',')
     epsg = 'epsg:3857'
     geometry = [Point(xy) for xy in zip(df['lon'], df['lat'])]
     geo_df_corners = gpd.GeoDataFrame(df_corners, crs = epsg, geometry = geometry)

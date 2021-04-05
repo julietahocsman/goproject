@@ -30,10 +30,11 @@ def preprocess_data(data):
     data['arrive'] = pd.to_datetime(data['arrive'])
     data['leave'] = pd.to_datetime(data['leave'])
     data["arrive_weekday"] = data["arrive"].dt.weekday
+
     return data
 
 def preproc(data_path):
     data = get_data(data_path)
     return preprocess_data(data)
 
-get_data('raw_data/dataBackup.json')
+get_data('../raw_data/dataBackup.json')

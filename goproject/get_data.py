@@ -37,4 +37,5 @@ def preproc(data_path):
     data = get_data(data_path)
     return preprocess_data(data)
 
-get_data('../raw_data/dataBackup.json')
+data_path = 'raw_data/dataBackup.json'
+preproc(data_path)
